@@ -12,8 +12,12 @@ class AdminUsersController extends GetxController {
   }
 
   Stream<List<UserModel>> getUsers() {
-    Stream<QuerySnapshot> stream = FirebaseFirestore.instance.collection('users').orderBy('first_name').snapshots();
-    return stream
-        .map((QuerySnapshot snapshot) => snapshot.docs.map((doc) => UserModel.fromQueryDocumentSnapshot(doc)).toList());
+    Stream<QuerySnapshot> stream = FirebaseFirestore.instance
+        .collection('users')
+        .orderBy('first_name')
+        .snapshots();
+    return stream.map((QuerySnapshot snapshot) => snapshot.docs
+        .map((doc) => UserModel.fromQueryDocumentSnapshot(doc))
+        .toList());
   }
 }

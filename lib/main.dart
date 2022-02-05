@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
       localizationsDelegates: const [
@@ -54,10 +54,16 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/admin/user/:uid/edit', page: () => AdminEditUser()),
         GetPage(name: '/admin/users/add', page: () => AdminAddUser()),
         GetPage(name: '/admin/yearbooks', page: () => AdminYearbooks()),
-        GetPage(name: '/admin/yearbook/:uid', page: () => AdminManageYearbook()),
-        GetPage(name: '/admin/publish/:uid', page: () => AdminPublishYearbook()),
-        GetPage(name: '/admin/yearbook_members/students', page: () => AdminYearbookStudents()),
-        GetPage(name: '/admin/yearbook_members/teachers', page: () => AdminYearbookTeachers()),
+        GetPage(
+            name: '/admin/yearbook/:uid', page: () => AdminManageYearbook()),
+        GetPage(
+            name: '/admin/publish/:uid', page: () => AdminPublishYearbook()),
+        GetPage(
+            name: '/admin/yearbook_members/students',
+            page: () => AdminYearbookStudents()),
+        GetPage(
+            name: '/admin/yearbook_members/teachers',
+            page: () => AdminYearbookTeachers()),
         GetPage(name: '/user/home', page: () => UserHomeScreen()),
       ],
     );

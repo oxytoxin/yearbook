@@ -7,7 +7,8 @@ import 'package:yearbook/views/shared/custom_scaffold.dart';
 class AdminYearbooks extends StatelessWidget {
   AdminYearbooks({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormBuilderState>();
-  AdminYearbooksController adminYearbooksController = Get.put(AdminYearbooksController());
+  AdminYearbooksController adminYearbooksController =
+      Get.put(AdminYearbooksController());
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,9 @@ class AdminYearbooks extends StatelessWidget {
       noDrawer: true,
       body: Column(
         children: [
-          ElevatedButton(onPressed: (() => openDialog(context)), child: Text("NEW YEARBOOK")),
+          ElevatedButton(
+              onPressed: (() => openDialog(context)),
+              child: Text("NEW YEARBOOK")),
           Expanded(
             child: Obx(() => ListView(
                   children: adminYearbooksController.yearbooks.value
@@ -32,10 +35,12 @@ class AdminYearbooks extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(yearbook.title!),
                                       yearbook.published!
@@ -57,7 +62,20 @@ class AdminYearbooks extends StatelessWidget {
                                             ),
                                     ],
                                   ),
-                                  Text(yearbook.school_year!),
+                                  Column(
+                                    children: [
+                                      Text(yearbook.school_year!),
+                                      TextButton(
+                                        onPressed: () {
+                                          adminYearbooksController
+                                              .deleteYearbook(yearbook.uid!);
+                                        },
+                                        child: Text('DELETE',
+                                            style:
+                                                TextStyle(color: Colors.red)),
+                                      )
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
@@ -91,7 +109,8 @@ class AdminYearbooks extends StatelessWidget {
                     ),
                     FormBuilderTextField(
                       name: 'school_year',
-                      decoration: const InputDecoration(labelText: "School Year"),
+                      decoration:
+                          const InputDecoration(labelText: "School Year"),
                     ),
                     SizedBox(
                       height: 20,
@@ -103,9 +122,11 @@ class AdminYearbooks extends StatelessWidget {
                               _formKey.currentState?.save();
                               await adminYearbooksController.createYearbook(
                                 title: _formKey.currentState?.value['title'],
-                                schoolYear: _formKey.currentState?.value['school_year'],
+                                schoolYear:
+                                    _formKey.currentState?.value['school_year'],
                               );
-                              Navigator.of(context, rootNavigator: true).pop(context);
+                              Navigator.of(context, rootNavigator: true)
+                                  .pop(context);
                             },
                             child: Text("CREATE")))
                   ],

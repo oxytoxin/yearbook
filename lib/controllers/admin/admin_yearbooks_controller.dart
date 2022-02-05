@@ -11,9 +11,11 @@ class AdminYearbooksController extends GetxController {
     super.onInit();
   }
 
-  Future createYearbook({required String title, required String schoolYear}) async {
+  Future createYearbook(
+      {required String title, required String schoolYear}) async {
     loading.value = true;
-    DocumentReference doc = await FirebaseFirestore.instance.collection('yearbooks').add({
+    DocumentReference doc =
+        await FirebaseFirestore.instance.collection('yearbooks').add({
       "title": title,
       "school_year": schoolYear,
       "prayer": "",
@@ -28,10 +30,14 @@ class AdminYearbooksController extends GetxController {
   }
 
   Stream<List<Yearbook>> getYearbooks() {
-    Stream<QuerySnapshot> stream =
-        FirebaseFirestore.instance.collection('yearbooks').orderBy('school_year').snapshots();
-    return stream.map((QuerySnapshot snapshot) =>
-        snapshot.docs.map((QueryDocumentSnapshot doc) => Yearbook.fromQueryDocumentSnapshot(doc)).toList());
+    Stream<QuerySnapshot> stream = FirebaseFirestore.instance
+        .collection('yearbooks')
+        .orderBy('school_year')
+        .snapshots();
+    return stream.map((QuerySnapshot snapshot) => snapshot.docs
+        .map((QueryDocumentSnapshot doc) =>
+            Yearbook.fromQueryDocumentSnapshot(doc))
+        .toList());
   }
 
   void deleteYearbook(String uid) async {

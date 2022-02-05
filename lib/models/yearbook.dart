@@ -4,6 +4,7 @@ class Yearbook {
   String? uid;
   String? title;
   String? school_year;
+  String? theme;
   String? prayer;
   String? song;
   String? yearbookUrl;
@@ -11,7 +12,10 @@ class Yearbook {
   List<dynamic>? students;
   List<dynamic>? teachers;
 
-  Yearbook({required this.title, required this.school_year, required this.published});
+  Yearbook(
+      {required this.title,
+      required this.school_year,
+      required this.published});
 
   Yearbook.fromQueryDocumentSnapshot(QueryDocumentSnapshot document) {
     uid = document.id;
@@ -20,6 +24,7 @@ class Yearbook {
     published = document.get('published');
     prayer = document.get('prayer');
     song = document.get('song');
+    theme = document.get('theme');
     students = document.get('students');
     teachers = document.get('teachers');
     yearbookUrl = document.get('yearbook_url');
@@ -32,6 +37,7 @@ class Yearbook {
     published = document.get('published');
     prayer = document.get('prayer');
     song = document.get('song');
+    theme = document.get('theme');
     students = document.get('students');
     teachers = document.get('teachers');
     yearbookUrl = document.get('yearbook_url');

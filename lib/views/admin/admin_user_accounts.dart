@@ -27,7 +27,8 @@ class AdminUserAccounts extends StatelessWidget {
                     .map((user) => Card(
                           child: InkWell(
                             onTap: () async {
-                              var result = await Get.toNamed('/admin/user/${user.uid}');
+                              var result =
+                                  await Get.toNamed('/admin/user/${user.uid}');
                               if (result == 'deleted') {
                                 Get.snackbar('Success', 'User deleted.');
                               }
@@ -35,10 +36,12 @@ class AdminUserAccounts extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         user.fullName,

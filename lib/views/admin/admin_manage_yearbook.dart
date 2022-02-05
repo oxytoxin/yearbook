@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:yearbook/controllers/admin/admin_yearbook_controller.dart';
 
 class AdminManageYearbook extends StatelessWidget {
-  final AdminYearbookController adminYearbookController = Get.put(AdminYearbookController());
+  final AdminYearbookController adminYearbookController =
+      Get.put(AdminYearbookController());
 
   final _formKey = GlobalKey<FormBuilderState>();
 
@@ -30,19 +31,28 @@ class AdminManageYearbook extends StatelessWidget {
                       children: [
                         FormBuilderTextField(
                           name: 'title',
-                          initialValue: adminYearbookController.yearbook.value!.title,
+                          initialValue:
+                              adminYearbookController.yearbook.value!.title,
                           decoration: InputDecoration(labelText: "Title"),
                         ),
                         FormBuilderTextField(
                           name: 'school_year',
-                          initialValue: adminYearbookController.yearbook.value!.school_year,
+                          initialValue: adminYearbookController
+                              .yearbook.value!.school_year,
                           decoration: InputDecoration(labelText: "School Year"),
+                        ),
+                        FormBuilderTextField(
+                          name: 'theme',
+                          initialValue:
+                              adminYearbookController.yearbook.value!.theme,
+                          decoration: InputDecoration(labelText: "Theme"),
                         ),
                         FormBuilderTextField(
                           name: 'prayer',
                           maxLines: 5,
                           keyboardType: TextInputType.multiline,
-                          initialValue: adminYearbookController.yearbook.value!.prayer,
+                          initialValue:
+                              adminYearbookController.yearbook.value!.prayer,
                           decoration: InputDecoration(
                             labelText: "Prayer",
                           ),
@@ -51,7 +61,8 @@ class AdminManageYearbook extends StatelessWidget {
                           name: 'song',
                           maxLines: 5,
                           keyboardType: TextInputType.multiline,
-                          initialValue: adminYearbookController.yearbook.value!.song,
+                          initialValue:
+                              adminYearbookController.yearbook.value!.song,
                           decoration: InputDecoration(
                             labelText: "Song",
                           ),
@@ -59,8 +70,10 @@ class AdminManageYearbook extends StatelessWidget {
                         SizedBox(
                           height: 40,
                         ),
-                        Text("# of Students: ${adminYearbookController.yearbook.value!.students!.length}"),
-                        Text("# of Teachers: ${adminYearbookController.yearbook.value!.teachers!.length}"),
+                        Text(
+                            "# of Students: ${adminYearbookController.yearbook.value!.students!.length}"),
+                        Text(
+                            "# of Teachers: ${adminYearbookController.yearbook.value!.teachers!.length}"),
                         SizedBox(
                           height: 20,
                         ),
@@ -69,11 +82,17 @@ class AdminManageYearbook extends StatelessWidget {
                             ElevatedButton(
                               onPressed: () {
                                 _formKey.currentState?.save();
-                                adminYearbookController.yearbook.value!.title = _formKey.currentState?.value['title'];
-                                adminYearbookController.yearbook.value!.school_year =
+                                adminYearbookController.yearbook.value!.theme =
+                                    _formKey.currentState?.value['theme'];
+                                adminYearbookController.yearbook.value!.title =
+                                    _formKey.currentState?.value['title'];
+                                adminYearbookController
+                                        .yearbook.value!.school_year =
                                     _formKey.currentState?.value['school_year'];
-                                adminYearbookController.yearbook.value!.prayer = _formKey.currentState?.value['prayer'];
-                                adminYearbookController.yearbook.value!.song = _formKey.currentState?.value['song'];
+                                adminYearbookController.yearbook.value!.prayer =
+                                    _formKey.currentState?.value['prayer'];
+                                adminYearbookController.yearbook.value!.song =
+                                    _formKey.currentState?.value['song'];
                                 adminYearbookController.saveYearbook();
                               },
                               child: Text("Save"),
@@ -93,13 +112,18 @@ class AdminManageYearbook extends StatelessWidget {
                             ElevatedButton(
                               onPressed: () {
                                 _formKey.currentState?.save();
-                                adminYearbookController.yearbook.value!.title = _formKey.currentState?.value['title'];
-                                adminYearbookController.yearbook.value!.school_year =
+                                adminYearbookController.yearbook.value!.title =
+                                    _formKey.currentState?.value['title'];
+                                adminYearbookController
+                                        .yearbook.value!.school_year =
                                     _formKey.currentState?.value['school_year'];
-                                adminYearbookController.yearbook.value!.prayer = _formKey.currentState?.value['prayer'];
-                                adminYearbookController.yearbook.value!.song = _formKey.currentState?.value['song'];
+                                adminYearbookController.yearbook.value!.prayer =
+                                    _formKey.currentState?.value['prayer'];
+                                adminYearbookController.yearbook.value!.song =
+                                    _formKey.currentState?.value['song'];
                                 adminYearbookController.saveYearbook();
-                                Get.toNamed('/admin/publish/${adminYearbookController.yearbook.value!.uid}');
+                                Get.toNamed(
+                                    '/admin/publish/${adminYearbookController.yearbook.value!.uid}');
                               },
                               child: Text("Publish"),
                             ),
